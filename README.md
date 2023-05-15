@@ -11,7 +11,7 @@
 
 ### pip install office365-rest-python-client
 
-## Excel VBA method
+# Excel VBA method
 
 ### Make a new Excel macro-enabled document. 
 
