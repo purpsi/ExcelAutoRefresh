@@ -1,8 +1,11 @@
 ﻿# ExcelAutoRefresh 
  
+ # Methods
+ 
  ## Python Method (WIP)
-
-## This will take your excel workbooks that are stored in SharePoint and update them whenever you schedule for them to be updated. 
+ ## Excel VBA method (working)
+ 
+# Python Method Instructions
 
 ### pip install pywin32
 
@@ -14,4 +17,5 @@
 
 ### Paste the code in and run. Remember to give it time as it will go through and open each document
 
+### ensure that none of the documents are open before you run
 
