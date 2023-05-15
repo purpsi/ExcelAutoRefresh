@@ -1,0 +1,49 @@
+Sub RefreshWorkbooks()
+
+    Dim Folders As Variant
+    Dim i As Integer
+    Dim MyFile As String
+    Dim MyWorkbook As Workbook
+
+    ' Specify the folders where the workbooks are
+    Folders = Array("C:\ ", "C:\", "C:\")
+
+    ' Loop over each folder
+    For i = LBound(Folders) To UBound(Folders)
+
+        ' Get the first Excel file in the folder
+        MyFile = Dir(Folders(i) & "\*.xls*")
+
+        ' Loop over each Excel file in the folder
+        Do While MyFile <> ""
+
+            ' Open the workbook
+            Set MyWorkbook = Workbooks.Open(Folders(i) & "\" & MyFile)
+
+            ' Turn off screen updating and alerts, and set calculation to manual
+            Application.DisplayAlerts = False
+            Application.ScreenUpdating = False
+            Application.Calculation = xlCalculationManual
+
+            ' Refresh all data connections
+            MyWorkbook.RefreshAll
+
+            ' Wait for 10 seconds
+            Application.Wait (Now + TimeValue("0:00:10"))
+
+            ' Save and close the workbook
+            MyWorkbook.Close SaveChanges:=True
+
+            ' Turn screen updating, alerts, and calculation back on
+            Application.DisplayAlerts = True
+            Application.ScreenUpdating = True
+            Application.Calculation = xlCalculationAutomatic
+
+            ' Get the next Excel file in the folder
+            MyFile = Dir
+
+        Loop
+
+    Next i
+
+End Sub
